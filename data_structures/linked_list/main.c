@@ -75,8 +75,7 @@ void insert_sorted(Node** root, int value) {
 
   while (curr->next != NULL) {
     if (curr->next->x >= value) {
-      insert_after(curr, value);
-      return;
+      break;
     }
     curr = curr->next;
   }
