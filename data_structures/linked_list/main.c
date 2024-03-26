@@ -65,16 +65,31 @@ void insert_after(Node* node, int value) {
   node->next = new_node;
 }
 
+void insert_sorted(Node** root, int value) {
+  if (*root == NULL || (*root)->x >= value) {
+    insert_beginning(root, value);
+    return;
+  }
+
+  Node* curr = *root;
+
+  while (curr->next != NULL) {
+    if (curr->next->x >= value) {
+      insert_after(curr, value);
+      return;
+    }
+    curr = curr->next;
+  }
+  insert_after(curr, value);
+}
+
 int main(int argc, char* argv[]) {
   Node* root = NULL;
 
-  insert_end(&root, 2);
-  insert_end(&root, 4);
-  insert_end(&root, 5);
-
-
-  insert_after(root, 3);
-  insert_after(root->next->next->next, 6);
+  insert_sorted(&root, 5);
+  insert_sorted(&root, 4);
+  insert_sorted(&root, 1);
+  insert_sorted(&root, 7);
 
   for (Node* curr = root; curr != NULL; curr = curr->next) {
     printf("%d\n", curr->x);
