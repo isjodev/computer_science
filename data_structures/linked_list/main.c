@@ -29,16 +29,6 @@ void insert_end(Node** root, int value) {
   curr->next = new_node;
 }
 
-void deallocate(Node** root) {
-  Node* curr = *root;
-  while (curr != NULL) {
-    Node* aux = curr;
-    curr = curr->next;
-    free(aux);
-  }
-
-  *root = NULL;
-}
 
 void insert_beginning(Node** root, int value) {
   Node* new_node = malloc(sizeof(Node));
@@ -82,17 +72,52 @@ void insert_sorted(Node** root, int value) {
   insert_after(curr, value);
 }
 
+void remove_element(Node** root, int value) {
+  if (*root == NULL) {
+    return;
+  }
+
+  if ((*root)->x == value) {
+    Node* to_remove = *root;
+    *root = (*root)->next;
+    free(to_remove);
+    return;
+  }
+
+  for (Node* curr = *root; curr->next != NULL; curr = curr->next) {
+    if (curr->next->x == value) {
+      Node* to_remove = curr->next;
+      curr->next = curr->next->next;
+      free(to_remove);
+      return;
+    }
+  }
+}
+
+void deallocate(Node** root) {
+  Node* curr = *root;
+  while (curr != NULL) {
+    Node* aux = curr;
+    curr = curr->next;
+    free(aux);
+  }
+
+  *root = NULL;
+}
+
 int main(int argc, char* argv[]) {
   Node* root = NULL;
 
-  insert_sorted(&root, 5);
-  insert_sorted(&root, 4);
   insert_sorted(&root, 1);
-  insert_sorted(&root, 7);
+  insert_sorted(&root, 3);
+  insert_sorted(&root, 6);
+
+  remove_element(&root, 1);
 
   for (Node* curr = root; curr != NULL; curr = curr->next) {
     printf("%d\n", curr->x);
   }
+
 
   deallocate(&root);
 
