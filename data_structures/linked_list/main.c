@@ -3,11 +3,11 @@
 
 typedef struct Node {
   int x;
-  struct Node* next;
+  struct Node *next;
 } Node;
 
-void insert_end(Node** root, int value) {
-  Node* new_node = malloc(sizeof(Node));
+void insert_end(Node **root, int value) {
+  Node *new_node = malloc(sizeof(Node));
 
   if (new_node == NULL) {
     exit(EXIT_FAILURE);
@@ -21,7 +21,7 @@ void insert_end(Node** root, int value) {
     return;
   }
 
-  Node* curr = *root;
+  Node *curr = *root;
   while (curr->next != NULL) {
     curr = curr->next;
   }
@@ -29,9 +29,8 @@ void insert_end(Node** root, int value) {
   curr->next = new_node;
 }
 
-
-void insert_beginning(Node** root, int value) {
-  Node* new_node = malloc(sizeof(Node));
+void insert_beginning(Node **root, int value) {
+  Node *new_node = malloc(sizeof(Node));
 
   if (new_node == NULL) {
     exit(EXIT_FAILURE);
@@ -43,8 +42,8 @@ void insert_beginning(Node** root, int value) {
   *root = new_node;
 }
 
-void insert_after(Node* node, int value) {
-  Node* new_node = malloc(sizeof(Node));
+void insert_after(Node *node, int value) {
+  Node *new_node = malloc(sizeof(Node));
 
   if (new_node == NULL) {
     exit(EXIT_FAILURE);
@@ -55,13 +54,13 @@ void insert_after(Node* node, int value) {
   node->next = new_node;
 }
 
-void insert_sorted(Node** root, int value) {
+void insert_sorted(Node **root, int value) {
   if (*root == NULL || (*root)->x >= value) {
     insert_beginning(root, value);
     return;
   }
 
-  Node* curr = *root;
+  Node *curr = *root;
 
   while (curr->next != NULL) {
     if (curr->next->x >= value) {
@@ -72,21 +71,21 @@ void insert_sorted(Node** root, int value) {
   insert_after(curr, value);
 }
 
-void remove_element(Node** root, int value) {
+void remove_element(Node **root, int value) {
   if (*root == NULL) {
     return;
   }
 
   if ((*root)->x == value) {
-    Node* to_remove = *root;
+    Node *to_remove = *root;
     *root = (*root)->next;
     free(to_remove);
     return;
   }
 
-  for (Node* curr = *root; curr->next != NULL; curr = curr->next) {
+  for (Node *curr = *root; curr->next != NULL; curr = curr->next) {
     if (curr->next->x == value) {
-      Node* to_remove = curr->next;
+      Node *to_remove = curr->next;
       curr->next = curr->next->next;
       free(to_remove);
       return;
@@ -94,10 +93,10 @@ void remove_element(Node** root, int value) {
   }
 }
 
-void deallocate(Node** root) {
-  Node* curr = *root;
+void deallocate(Node **root) {
+  Node *curr = *root;
   while (curr != NULL) {
-    Node* aux = curr;
+    Node *aux = curr;
     curr = curr->next;
     free(aux);
   }
@@ -105,19 +104,38 @@ void deallocate(Node** root) {
   *root = NULL;
 }
 
-int main(int argc, char* argv[]) {
-  Node* root = NULL;
+void reverse(Node **root) {
+  Node *prev = NULL;
+  Node *curr = *root;
 
-  insert_sorted(&root, 1);
-  insert_sorted(&root, 3);
-  insert_sorted(&root, 6);
+  while (curr != NULL) {
+    Node *next = curr->next;
 
-  remove_element(&root, 1);
+    curr->next = prev;
 
-  for (Node* curr = root; curr != NULL; curr = curr->next) {
-    printf("%d\n", curr->x);
+    prev = curr;
+    curr = next;
   }
 
+  *root = prev;
+}
+
+void print_list(Node **root) {
+  for (Node *curr = *root; curr != NULL; curr = curr->next) {
+    printf("%d\n", curr->x);
+  }
+}
+
+int main(int argc, char *argv[]) {
+  Node *root = NULL;
+
+  insert_end(&root, 1);
+  insert_end(&root, 1);
+  insert_end(&root, 3);
+  insert_end(&root, 6);
+  insert_end(&root, 7);
+
+  print_list(&root);
 
   deallocate(&root);
 
