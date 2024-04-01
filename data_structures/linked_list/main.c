@@ -126,6 +126,22 @@ void print_list(Node **root) {
   }
 }
 
+int has_loops(Node *root) {
+  Node *slow = root;
+  Node *fast = root;
+
+  while (slow != NULL && fast != NULL && fast->next != NULL) {
+    slow = slow->next;
+    fast = fast->next->next;
+
+    if (slow == fast) {
+      return 1;
+    }
+  }
+
+  return 0;
+}
+
 int main(int argc, char *argv[]) {
   Node *root = NULL;
 
@@ -134,6 +150,13 @@ int main(int argc, char *argv[]) {
   insert_end(&root, 3);
   insert_end(&root, 6);
   insert_end(&root, 7);
+
+  root->next->next->next->next->next = root->next;
+
+  if (has_loops(root) == 1) {
+    printf("Linked List has Loop\n");
+    exit(EXIT_SUCCESS);
+  }
 
   print_list(&root);
 
