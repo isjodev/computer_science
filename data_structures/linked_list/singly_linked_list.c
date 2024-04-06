@@ -142,6 +142,14 @@ int has_loops(Node *root) {
   return 0;
 }
 
+int count(Node *node) {
+  if (node == NULL) {
+    return 0;
+  }
+
+  return 1 + count(node->next);
+}
+
 int main(int argc, char *argv[]) {
   Node *root = NULL;
 
@@ -151,7 +159,7 @@ int main(int argc, char *argv[]) {
   insert_end(&root, 6);
   insert_end(&root, 7);
 
-  root->next->next->next->next->next = root->next;
+  // root->next->next->next->next->next = root->next;
 
   if (has_loops(root) == 1) {
     printf("Linked List has Loop\n");
