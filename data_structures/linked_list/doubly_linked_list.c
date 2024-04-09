@@ -76,9 +76,20 @@ void insert_after(Node *node, int value) {
   new_node->x = value;
   new_node->prev = node;
   new_node->next = node->next;
+  if (node->next != NULL) {
+    node->next->prev = new_node;
+  }
+  node->next = new_node;
+}
+
+void print_list(Node **root) {
+  for (Node *curr = *root; curr != NULL; curr = curr->next) {
+    printf("%d\n", curr->x);
+  }
 }
 
 int main(int argc, char *argv[]) {
+  // Cast stdin args to void.
   (void)argc;
   (void)argv;
 
@@ -90,9 +101,7 @@ int main(int argc, char *argv[]) {
   insert_beginning(&tail, 1);
   insert_end(&head, 5);
 
-  for (Node *curr = tail; curr != NULL; curr = curr->next) {
-    printf("%d\n", curr->x);
-  }
+  print_list(&tail);
 
   deallocate(&tail, &head);
   return 0;

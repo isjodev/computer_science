@@ -1,0 +1,496 @@
+#+title: C How To Program
+
+#+BEGIN_SRC c
+int main(void) {
+    return 0;
+}
+#+END_SRC
+
+* 2 - Intro To C Programming
+- fig02_01.c
+#+BEGIN_SRC c
+// A first program in C.
+#include <stdio.h>
+
+// Function main begins program execution.
+int main(void) {
+  printf("Welcome to C!\n");
+  return 0;
+}
+#+END_SRC
+
+- fig02_02.c
+#+BEGIN_SRC c
+// Printing on one line with two printf statements.
+int main(void) {
+    printf("Welcome ");
+    printf("to C!\n");
+    return 0;
+}
+#+END_SRC
+
+- fig02_03.c
+#+BEGIN_SRC c
+// Printing multiple lines with a single printf.
+int main(void) {
+    printf("Welcome\nTo\nC!\n");
+    return 0;
+}
+#+END_SRC
+
+- fig02_04.c
+#+BEGIN_SRC c
+// Addition program
+int main(void) {
+    int integer1 = 0;
+    int integer2 = 0;
+
+    printf("Enter first integer: "); // Prompt
+    scanf("%d", &integer1);
+
+    printf("Enter second integer: "); // Prompt
+    scanf("%d", &integer2);
+
+    int sum = 0;
+    sum = integer1 + integer2;
+
+    printf("Sum is %d\n", sum);
+    return 0;
+}
+#+END_SRC
+
+- fig02_05.c
+#+BEGIN_SRC c
+int main(void) {
+    printf("Enter two integers and I will tell you\n");
+    printf("the relationships they satisfy: ");
+
+    int number1 = 0;
+    int number2 = 0;
+
+    scanf("%d %d", &number1, &number2);
+
+    if (number1 == number2) {
+        printf("%d is equal to %d\n", number1, number2);
+    }
+    if (number1 != number2) {
+        printf("%d is not equal to %d\n", number1, number2);
+    }
+    if (number1 < number2) {
+        printf("%d is less than %d\n", number1, number2);
+    }
+    if (number1 > number2) {
+        printf("%d is greater than %d\n", number1, number2);
+    }
+    if (number1 <= number2) {
+        printf("%d is less than or equal to %d\n", number1, number2);
+    }
+    if (number1 >= number2) {
+        printf("%d is greater than or equal to %d\n", number1, number2);
+    }
+    return 0;
+}
+#+END_SRC
+
+* 3 - Structured Program Development
+- fig03_02.c
+#+BEGIN_SRC c
+// Class average program with counter-controlled iteration.
+#include <stdio.h>
+
+int main(void) {
+    // Initialization phase.
+    int total = 0;
+    int counter = 1;
+
+    // Processing phase.
+    while (counter <= 10) {
+        printf("%s", "Enter grade: "); // Prompt for input.
+        int grade = 0;
+        scanf("%d", &grade);
+        total = total + grade;
+        counter = counter + 1;
+    } // End while.
+
+    // Termination phase.
+    int average = total / 10;
+    printf("Class average is: %d\n", average);
+    return 0;
+}
+#+END_SRC
+
+- fig03_04.c
+#+BEGIN_SRC c
+// Class average program with sentinel contorlled iteration.
+#include <stdio.h>
+
+int main(void) {
+    // Initialization phase.
+    int total = 0;
+    int counter = 0;
+
+    // Processing phase.
+    // Get first grade from user.
+    printf("%s", "Enter grade, -1 to end: ");
+    int grade = 0;
+    scanf("%d", &grade);
+
+    // Loop while sentinel value is not read from user.
+    while (grade != -1) {
+        total = total + grade;
+        counter = counter + 1;
+
+        // Get next grade from user.
+        printf("%s", "Enter grade, -1 to end: ");
+        scanf("%d", &grade);
+    } // End while.
+
+    // Termination phase.
+    // If user entered at least one grade.
+    if (counter != 0) {
+        // Calculate average of all grades entered.
+        double average = (double) total / counter;
+
+        // Display average with two digits of precision.
+        printf("Class average is %.2f\n", average);
+    } else {
+        puts("No grades were entered.");
+    }
+    return 0;
+}
+#+END_SRC
+
+- fig03_06.c
+#+BEGIN_SRC c
+// Analysis of examination results.
+#include <stdio.h>
+
+// Function main begins program execution.
+int main(void) {
+    int passes = 0;
+    int failures = 0;
+    int student = 1;
+
+    // Process 10 students using counter-controlled loop
+    while (student <= 10) {
+        // Prompt user for input and obtain value from user.
+        printf("%s", "Enter result (1=pass, 2=fail): ");
+        int result = 0;
+        scanf("%d", &result);
+
+        if (result == 1) {
+            passes = passes + 1;
+        } else {
+            failures = failures + 1;
+        }
+    }
+
+    // Display number of passes and failures.
+    printf("Passed %d\n", passes);
+    printf("Failed %d\n", failures);
+
+    if (passes > 8) {
+        puts("Bonus to instructor!");
+    }
+    return 0;
+}
+#+END_SRC
+
+- fig03_07.c
+#+BEGIN_SRC c
+// Preincrementing and postincrementing.
+#include <stdio.h>
+
+int main(void) {
+    int c = 5;
+    printf("%d\n", c);
+    printf("%d\n", c++);
+    printf("%d\n", c);
+
+    int c = 5;
+    printf("%d\n", c);
+    printf("%d\n", ++c);
+    printf("%d\n", c);
+    return 0;
+}
+#+END_SRC
+
+* 4 - Program Control
+- fig04_01.c
+#+BEGIN_SRC c
+// Counter-controlled iteration.
+#include <stdio.h>
+
+int main(void) {
+    int counter = 1;
+
+    while (counter <= 5) {
+        printf("%d ", counter);
+        ++counter;
+    }
+    puts("");
+    return 0;
+}
+#+END_SRC
+
+- fig04_02.c
+#+BEGIN_SRC c
+// Counter controlled iteration with a for statement.
+#include <stdio.h>
+
+int main(void) {
+    // Initialization, iteration, and increment
+    // Are all included in the for statement header.
+    for (int counter = 1; counter <= 5; ++counter) {
+        printf("%d ", counter);
+    }
+    puts("");
+    return 0;
+}
+#+END_SRC
+
+- fig04_03.c
+#+BEGIN_SRC c
+// Summation with for.
+#include <stdio.h>
+
+int main(void) {
+    int sum = 0;
+
+    for (int number = 2; number <= 100; number += 2) {
+        sum += number;
+    }
+    printf("Sum is %d\n", sum);
+    return 0;
+}
+#+END_SRC
+
+- fig04_04.c
+#+BEGIN_SRC c
+// Calculating compound interest.
+#include <stdio.h>
+#include <math.h>
+
+int main(void) {
+    double principle = 1000.0;
+    double rate = 0.05;
+
+    // Output table column heads
+    printf("%4s%21s\n", "Year", "Amount on deposit");
+
+    // Calculate amount on deposit for each of ten years
+    for (int year = 1; year <= 10; ++year) {
+        // Calculate new amount for specified year.
+        double amount = principal * pow(1.0 + rate, year);
+
+        // Output one table row.
+        printf("$4d%21.2f\n", year, amount);
+    }
+    return 0;
+}
+#+END_SRC
+
+- fig04_05.c
+#+BEGIN_SRC c
+// Counting letter grades with a switch.
+#include <stdio.h>
+
+int main(void) {
+    int aCount = 0;
+    int bCount = 0;
+    int cCount = 0;
+    int dCount = 0;
+    int fCount = 0;
+
+    puts("enter the letter grades.");
+    puts("Enter the EOF character to end input.");
+    int grade = 0;
+
+    // Loop until user types the end-of-file keky sequence
+    while ((grade = getchar()) != EOF) {
+        // Determine which grade was input
+        switch (grade) {
+            case 'A':
+            case 'a':
+                ++aCount;
+                break;
+            case 'B':
+            case 'b':
+                ++bCount;
+                break;
+            case 'C':
+            case 'c':
+                ++cCount;
+                break;
+            case 'D':
+            case 'd':
+                ++dCount;
+                break;
+            case 'F':
+            case 'f':
+                ++fCount;
+                break;
+            case '\n':
+            case '\t':
+            case ' ':
+                break;
+            default:
+                printf("%s", "Incorrect letter grade entered");
+                puts(" Enter a new garde.");
+                break;
+        }
+    }
+
+    // Output summary of results.
+    puts("\nTotals for each letter grade are:"); ;
+    printf("A: %d\n", aCount);
+    printf("B: %d\n", bCount);
+    printf("C: %d\n", cCount);
+    printf("D: %d\n", dCount);
+    printf("F: %d\n", fCount);
+    return 0;
+}
+#+END_SRC
+
+- fig04_06.c
+#+BEGIN_SRC c
+// Using the do..while iteration statement
+#include <stdio.h>
+
+int main(void) {
+    int counter = 1;
+    do {
+        printf("%d ", counter);
+    } while (++counter <= 5);
+    return 0;
+}
+#+END_SRC
+
+- fig04_07.c
+  #+BEGIN_SRC c
+  // Using the break statement in a for statement.
+  #include <stdio.h>
+
+  int main(void) {
+      int x = 1;
+
+      // Loop 10 times
+      for (; x <= 10; ++x) {
+          if (x == 5) {
+              break;
+          }
+          printf("%d ", x);
+      }
+      printf("\nBroke out of loop at x == %d\n", x);
+      return 0;
+  }
+  #+END_SRC
+
+- fig04_08.c
+  #+BEGIN_SRC c
+  // Using the continue statement in a for statement.
+  #include <stdio.h>
+
+  int main(void) {
+      for (int x = 1; x <= 10; ++x) {
+          if (x == 5) {
+              continue;
+          }
+          printf("%d", x);
+      }
+      puts("\nUsed continue to skip printing the value 5");
+      return 0;
+  }
+  #+END_SRC
+
+* 5 - Functions
+- fig05_01.c
+#+BEGIN_SRC c
+//
+#include <stdio.h>
+
+int main(void) {
+    return 0;
+}
+#+END_SRC
+- fig05_02.c
+#+BEGIN_SRC c
+//
+#include <stdio.h>
+
+int main(void) {
+    return 0;
+}
+#+END_SRC
+- fig05_03.c
+#+BEGIN_SRC c
+//
+#include <stdio.h>
+
+int main(void) {
+    return 0;
+}
+#+END_SRC
+- fig05_04.c
+#+BEGIN_SRC c
+//
+#include <stdio.h>
+
+int main(void) {
+    return 0;
+}
+#+END_SRC
+- fig05_05.c
+#+BEGIN_SRC c
+//
+#include <stdio.h>
+
+int main(void) {
+    return 0;
+}
+#+END_SRC
+- fig05_06.c
+#+BEGIN_SRC c
+//
+#include <stdio.h>
+
+int main(void) {
+    return 0;
+}
+#+END_SRC
+- fig05_07.c
+#+BEGIN_SRC c
+//
+#include <stdio.h>
+
+int main(void) {
+    return 0;
+}
+#+END_SRC
+- fig05_08.c
+#+BEGIN_SRC c
+//
+#include <stdio.h>
+
+int main(void) {
+    return 0;
+}
+#+END_SRC
+- fig05_09.c
+#+BEGIN_SRC c
+//
+#include <stdio.h>
+
+int main(void) {
+    return 0;
+}
+#+END_SRC
+- fig05_10.c
+#+BEGIN_SRC c
+//
+#include <stdio.h>
+
+int main(void) {
+    return 0;
+}
+#+END_SRC
