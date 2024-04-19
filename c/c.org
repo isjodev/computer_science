@@ -747,3 +747,12 @@ unsigned long long int fibonacci(int n) {
 
 }
 #+END_SRC
+
+* 6 - Arrays
+#+BEGIN_SRC c
+// Initializing the elements of an array to zeros.
+#include <stdio.h>
+int main(void) {
+    return 0;
+}
+#+END_SRC
