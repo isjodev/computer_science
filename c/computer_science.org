@@ -1,46 +1,71 @@
-#+title: C
-#+description: Wherein the author has collected his reference materials...
+#+title: Comp Sci
 
-#+BEGIN_SRC c
-// Description:
-#include <stdio.h>
-
-int main(void) {
-    // Template
-    return 0;
-}
-
-#+END_SRC
-
-* The C Programming Language
-** Chapter 1
-*** 1.1 Getting Started
-- The only way to learn a new programming language is by writing programs in it.
-  The first program to write is the same for all languages.
-- In C, the program to print "Hello, world" is
-  #+BEGIN_SRC c
-  #include <stdio.h>
-
-  main() {
-    printf("Hello, world.\n");
-  }
-  #+END_SRC
-- To run:
-  #+BEGIN_SRC sh
-  gcc hello.c && ./a.out
-  #+END_SRC
-*** 1.10 External Variables and Scope
-** Chapter 2
-** Chapter 3
-** Chapter 4
-** Chapter 5
-** Chapter 6
-** Chapter 7
-** Chapter 8
-
-* Modern C
-* Pointers
-* Reference
+* Data Structures
+** Arrays
+** Linked List
+** Stack
+** Queue
+** Hash Table
+** Tree
+*** Binary Tree
+*** Binary Search Tree
+*** Complete Binary Tree
+*** Balanced Tree
+*** Unbalanced Tree
+** Graph
+*** Directed Graph
+*** Undirected Graph
+*** Spanning Tree
+** Heap
+* Asymptotic Notation
+** Big O
+** Big Theta
+** Big Omega
+** Common Runtimes
+*** Constant
+*** Logarithmic
+*** Linear
+*** Polynomial
+*** Exponential
+*** Factorial
+* Common Algorithms
+** Sorting
+** Recursion
+** Tree
+** Graph
+** Greedy
+** Back Tracking
+** Substring Search
+** Searching
+** Caches
+* Bitwise Operators
+* Floating Point Numbers
+* Endianness
+* Character Encodings
+** Unicode
+** ASCII
+* Design PAtters
+* Math
+* Complexity Classes
+* Tries
+* System Design
+* Databases
+* Networking
+** OSI Model
+** TCP/IP Model
+** DNS
+** HTTP
+** TLS & HTTPS
+** Sockets
+* Security
+** Public Key Cryptography
+** Hashing / Encryption / Encoding
+** Hasing Algorithms
+** OSWAP Top 10
+* Theory
+* Processes and Threads
+* K - D Trees
+* C Programming Quickref
 ** hello.c
 #+begin_src c
 #include <stdio.h>
