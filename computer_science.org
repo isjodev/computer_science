@@ -30,6 +30,8 @@
 *** Factorial
 * Common Algorithms
 ** Sorting
+*** Merge Sort
+*** Quick Sort
 ** Recursion
 ** Tree
 ** Graph
@@ -44,7 +46,7 @@
 * Character Encodings
 ** Unicode
 ** ASCII
-* Design PAtters
+* Design Patterns
 * Math
 * Complexity Classes
 * Tries

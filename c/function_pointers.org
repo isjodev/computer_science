@@ -1,0 +1,5 @@
+#+title: Function Pointers
+
+- Lets start with a basic function which we will be pointing to.
+#+begin_src c
+#+end_src
