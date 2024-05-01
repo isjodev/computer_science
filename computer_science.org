@@ -32,6 +32,42 @@
 ** Sorting
 *** Merge Sort
 *** Quick Sort
+- Aptly named because, when properly implemented, it is the fastest known
+  general-purpose in-memory sorting algorithm in the average case.
+| variation    | time complexity | space complexity |
+| best case    | O(n log n)      | O(log n)         |
+| average case | O(n log n)      | O(log n)         |
+| worst case   | O(n^2)          | O(n)             |
+
+**** IMPLEMENTATION
+#+begin_src c
+void swap(int *a, int *b) {
+    int temp = *a;
+    *a = *b;
+    *b = temp;
+}
+
+void partition(int *array, int start, int end) {
+    int pivot = array[end];
+    int pivot_idx = (start - 1);
+    for (int i = 0; i < end; i++) {
+        if (array[i] <= pivot) {
+            pivot_idx++;
+            swap(&array[i], &array[pivot_idx]);
+        }
+    }
+    swap(&array[pivot_idx + 1], &array[end]);
+    return (pivot_idx + 1);
+}
+
+void quick_sort(int *array, int start, int end) {
+    if (start < end) {
+        int pivot_idx = partition(array, start, end);
+        quick_sort(array, start, pivot_idx - 1);
+        quick_sort(array, pivot_idx + 1, end);
+    }
+}
+#+end_src
 ** Recursion
 ** Tree
 ** Graph
