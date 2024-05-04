@@ -2,15 +2,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
+#include "../../include/array_util.h"
 
 #define LEN 5
 
 // Function prototypes
-void insertion_sort(int *, int);
-void print_array(int *, int);
-int get_array_length();
-int *allocate_array(int);
-void populate_array(int *array, int len);
 void insertion_sort(int *array, int len);
 
 void print_array(int *array, int len) {
