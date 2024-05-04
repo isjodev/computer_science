@@ -31,7 +31,18 @@
 * Common Algorithms
 ** Sorting
 *** Merge Sort
-- Pretty dang ol effective sort, mang...
+- Sorts a subarray A[p:r] starting with the entire array A[1:n] and recursing
+  down to smaller and smaller subarrays.
+  1. Divide the subarray A[p:r] to be sorted into two adjacent subarrays,
+     each of half their size. To do so, compute the midpoint q of A[p:r]
+     (taking the average of p and r), and divide A[p:r] into subarrays A[p:q]
+     and A[q + 1:r]
+  2. Conquer by sorting each of the two subarrays A[p:q] and A[q + 1:r]
+     recursively using merge sort.
+  3. Combine by merging the two sorted subarrays A[p:q] and A[q +1:r] back
+     into A[p:r], producing the sorted answer.
+**** Pseudocode
+**** Implementation
 *** Quick Sort
 - Aptly named because, when properly implemented, it is the fastest known
   general-purpose in-memory sorting algorithm in the average case.
@@ -69,6 +80,7 @@ void quick_sort(int *array, int start, int end) {
     }
 }
 #+end_src
+
 *** Insertion Sort
 **** IMPLEMENTATION
 #+begin_src c
