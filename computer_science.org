@@ -31,6 +31,7 @@
 * Common Algorithms
 ** Sorting
 *** Merge Sort
+- Pretty dang ol effective sort, mang...
 *** Quick Sort
 - Aptly named because, when properly implemented, it is the fastest known
   general-purpose in-memory sorting algorithm in the average case.
