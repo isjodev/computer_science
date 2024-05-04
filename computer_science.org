@@ -41,8 +41,59 @@
      recursively using merge sort.
   3. Combine by merging the two sorted subarrays A[p:q] and A[q +1:r] back
      into A[p:r], producing the sorted answer.
-**** Pseudocode
 **** Implementation
+#+begin_src c
+
+int get_midpoint(int start, int end) {
+    return floor(start + end) / 2;
+}
+
+void merge(int* array, int p, int q, int r) {
+    int len_left = q - q + 1;
+    int len_right = r - q;
+
+    int* left_subarray = malloc(sizeof(int)*len_left);
+    int* right_subarray = malloc(sizeof(int)*len_right);
+
+    for (int i = 0; i < len_left; i++) {
+        left_subarray[i] = array[p + i];
+    }
+
+    for (int j = 0; j < len_right; j++) {
+        right_subarray[j] = array[q + j + 1];
+    }
+
+    int i = 0;
+    int j = 0;
+    int k = p;
+
+    while (i < len_left) {
+        array[k] = left_subarray[i];
+        i++;
+        k++;
+    }
+
+    while (j < len_right) {
+        array[k] = right_subarray[j];
+        j++;
+        k++;
+    }
+    free(left_subarray);
+    free(right_subarray);
+}
+
+void merge_sort(int* array, int start, int end) {
+    if (start >= end) {
+        return;
+    }
+
+    int mid = get_midpoint(start, end);
+    merge_sort(array, start, mid);
+    merge_sort(array, mid + 1, end);
+    merge(array, start, mid, end);
+}
+
+#+end_src
 *** Quick Sort
 - Aptly named because, when properly implemented, it is the fastest known
   general-purpose in-memory sorting algorithm in the average case.

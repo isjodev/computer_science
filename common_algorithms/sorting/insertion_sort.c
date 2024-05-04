@@ -46,5 +46,6 @@ int main(int argc, char **argv) {
   insertion_sort(array, LEN);
   print_array(array, LEN);
   free(array);
+
   return 0;
 }

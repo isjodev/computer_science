@@ -2,8 +2,9 @@
 
 void print_array(int *array, int len) {
   for (unsigned i = 0; i < len; i++) {
-    printf("%d\n", *(array + i));
+    printf("%d ", *(array + i));
   }
+  printf("\n"); 
 }
 
 int *allocate_array(int len) {
@@ -14,7 +15,7 @@ int *allocate_array(int len) {
 void populate_array(int *array, int len) {
   srand(time(NULL));
   for (int i = 0; i < len; ++i) {
-    int temp = rand();
+    int temp = rand() % 100;
     *(array + i) = temp;
   }
 }
