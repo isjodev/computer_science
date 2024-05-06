@@ -5,7 +5,7 @@
 #include "../../include/array_util.h"
 #include <math.h>
 
-#define LEN 5
+#define LEN 100000000
 
 // Function prototypes
 void merge_sort(int *, int, int);
@@ -15,9 +15,9 @@ int get_midpoint(int, int);
 int main(int argc, char **argv) {
   int *array = allocate_array(LEN);
   populate_array(array, LEN);
-  print_array(array, LEN);
   merge_sort(array, 0, LEN-1); 
   print_array(array, LEN);
+  printf("merge_sort\n"); 
   free(array);
   return 0;
 }
@@ -43,7 +43,7 @@ void merge(int* array, int start, int mid, int end)  {
 
   int i = 0; 
   int j = 0; 
-  int k = mid; 
+  int k = start; 
 
   while (i < len_left && j < len_right) {
     if (left_subarray[i] <= right_subarray[j]) {

@@ -49,7 +49,7 @@ int get_midpoint(int start, int end) {
 }
 
 void merge(int* array, int p, int q, int r) {
-    int len_left = q - q + 1;
+    int len_left = q - p + 1;
     int len_right = r - q;
 
     int* left_subarray = malloc(sizeof(int)*len_left);
