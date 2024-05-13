@@ -1,6 +1,6 @@
 CC=gcc 
 CFLAGS=-g -Wall 
-BIN=trie_example 
+BINS=main
 
 all: $(BINS) 
 
@@ -8,4 +8,4 @@ all: $(BINS)
 	$(CC) $(CFLAGS) $^ -o $@
 
 clean: 
-	$(RM) -r $(BINS) main *.dSYM
+	$(RM) -r $(BINS) *.dSYM
