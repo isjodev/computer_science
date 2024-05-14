@@ -5,7 +5,7 @@
 #include "../../include/array_util.h"
 #include <math.h>
 
-#define LEN 100000000
+#define LEN 1000000000
 
 // Function prototypes
 void merge_sort(int *, int, int);
