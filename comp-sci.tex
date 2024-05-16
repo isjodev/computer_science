@@ -1,0 +1,51 @@
+\documentclass[12pt, letterpaper]{article}
+\usepackage{listings}
+\title{Comp Sci}
+\author{Jackson Smith}
+\date{May 2024}
+
+\begin{document}
+\maketitle
+
+\section{Data Structures}
+
+\subsection{Array}
+
+\subsection{Tree}
+\subsubsection{Binary Tree}
+\subsubsection{Binary Search Tree}
+\subsubsection{Complete Binary Tree}
+
+\subsection{Graph} 
+\subsubsection{Directed Graph} 
+
+\section{Asymtotic Notation} 
+
+\section{Common Algorithms}
+
+\subsection{Sorting}
+
+\subsubsection{Merge Sort}
+
+\paragraph{Description}
+Sorts a subarray A[p:r] starting with the entire array A[1:n] and recursing 
+down to smaller and smaller subarrays. 
+\begin{enumerate}
+	\item Divide the subarray A[p:r] to be sorted into two adjacent subarrays, 
+		each of half their size. To do so, compute the midpoint q of A[p:r]
+		(taking the average of p and r), and divide A[p:r] into subarrays A[p:q]
+		and A[q + 1: r]. 
+	\item Conquer by sorting each of the two subarrays A[p:q] and A[q + 1:r]
+		recursively using merge sort. 
+	\item Combine by merging the two sorted subarrays A[p:q] and A[q + 1:r] back
+		into A[p:r], producing the sorted answer. 
+\end{enumerate}
+
+\paragraph{Implementation}
+\begin{lstlisting}[language=C] 
+	int get_midpoint(int start, int end) {
+		return floor(start+end)/2; 
+	}
+\end{lstlisting}
+
+\end{document}
